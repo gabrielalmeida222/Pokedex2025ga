@@ -1,6 +1,6 @@
 -- Configuração do GIT
-git config --global user.name <seu nome de usuário>
-git config --global user.email <seu email do github>
+git config --global user.name gallojunior
+git config --global user.email gallojunior@gmail.com
 
 -- Criar o projeto
 dotnet new mvc -o Pokedex

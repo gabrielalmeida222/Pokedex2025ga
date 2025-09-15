@@ -5,8 +5,7 @@ namespace Pokedex.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> opt)
-            : base(opt)
+        public AppDbContext(DbContextOptions<AppDbContext> opt) : base(opt)
         {
         }
 
@@ -15,5 +14,13 @@ namespace Pokedex.Data
         public DbSet<PokemonTipo> PokemonTipos { get; set; }
         public DbSet<Regiao> Regioes { get; set; }
         public DbSet<Tipo> Tipos { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<PokemonTipo>()
+                .HasKey(pt => new { pt.PokemonNumero, pt.TipoId });
+        }
+
     }
 }
